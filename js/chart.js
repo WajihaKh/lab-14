@@ -10,20 +10,27 @@ let canvasElem = document.getElementById('chart')
  * - Call chart.js with the configuration and the canvasElem
  *
  */
-function renderChart() {
-}
+let state = new AppState();
+state.loadItems();
 
-renderChart();
-const ctx = document.getElementById('myChart');
+const data= state.allProducts
+
+function renderChart() {
+  const ctx = document.getElementById('chart');
 
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: [],
+      labels: data.map(product => product.name),
       datasets: [{
         label: '# of Votes',
-        data: [],
+        data: data.map(product => product.timesClicked),
         borderWidth: 1
+      },{
+        label: '# of Views',
+        data: data.map(product => product.timesShown),
+        borderWidth: 1,
+        backgroundColor: '#efefef'
       }]
     },
     options: {
@@ -34,3 +41,6 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
+}
+
+renderChart();
