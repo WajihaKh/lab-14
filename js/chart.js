@@ -25,12 +25,14 @@ function renderChart() {
       datasets: [{
         label: '# of Votes',
         data: data.map(product => product.timesClicked),
-        borderWidth: 1
+        borderWidth: 1,
+        backgroundColor: '#0E1D34'
+
       },{
         label: '# of Views',
         data: data.map(product => product.timesShown),
         borderWidth: 1,
-        backgroundColor: '#efefef'
+        backgroundColor: '#5D81B6'
       }]
     },
     options: {
